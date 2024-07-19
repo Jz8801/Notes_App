@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
+import API_URL from '../apiConfig'
 
 const NotesListPage = () => {
     let [notes, setNotes] = useState([])
@@ -10,9 +11,8 @@ const NotesListPage = () => {
     }, [])
 
     let getNotes = async () => {
-        let response = await fetch('/api/notes/')
+        let response = await fetch(`${API_URL}/api/notes/`)
         let data = await response.json()
-        console.log(data)
         setNotes(data)
     }
 

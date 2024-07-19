@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import API_URL from '../apiConfig'
 
 let getTitle = (note) => {
   let title = note.body.split('\n')[0]
@@ -27,7 +28,7 @@ let getContent = (note) => {
 
 const ListItem = ({note}) => {
   return (
-    <Link to={`/note/${note.id}`}>
+    <Link to={`${API_URL}/note/${note.id}`}>
       <div className='notes-list-item'>
         <h3>{getTitle(note)}</h3>
         <p><span>{getTime(note)}</span>{getContent(note)}</p>

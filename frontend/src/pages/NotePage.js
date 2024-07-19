@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
+import API_URL from '../apiConfig'
 
 const NotePage = ({ history }) => {
 
@@ -15,13 +16,13 @@ const NotePage = ({ history }) => {
     let getNote = async () => {
         if (id === 'new') return
 
-        let response = await fetch(`/api/notes/${id}/`)
+        let response = await fetch(`${API_URL}/api/notes/${id}/`)
         let data = await response.json()
         setNote(data)
     }
 
     let createNote = async () => {
-      fetch(`/api/notes/create/`, {
+      fetch(`${API_URL}/api/notes/create/`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -31,7 +32,7 @@ const NotePage = ({ history }) => {
     }
 
     let updateNote = async () => {
-      fetch(`/api/notes/${id}/update/`, {
+      fetch(`${API_URL}/api/notes/${id}/update/`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -41,7 +42,7 @@ const NotePage = ({ history }) => {
     }
 
     let deleteNote = async () => {
-      fetch(`/api/notes/${id}/delete/`, {
+      fetch(`${API_URL}/api/notes/${id}/delete/`, {
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
